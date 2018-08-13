@@ -17,4 +17,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+// Ligando a aplicação à rota
+const teste = require('./routes/teste');
+
+// Associando a rota /ola à rota
+app.use('/ola', teste);
+
 module.exports = app;

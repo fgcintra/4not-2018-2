@@ -31,4 +31,7 @@ const teste = require('./routes/teste');
 // Associando a rota /ola à rota
 app.use('/ola', teste);
 
+const artigo = require('./routes/artigo');
+app.use('/artigo', artigo);
+
 module.exports = app;

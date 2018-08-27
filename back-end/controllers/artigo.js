@@ -25,6 +25,61 @@ module.exports = function() {
 
    }
 
+   controller.listar = function(req, res) {
+
+      Artigo.find().exec().then(
+         // Foi bem
+         function(artigos) {
+            // Retornando os artigos encontrados com
+            // status HTTP 200: Ok
+            res.json(artigos).end();
+         },
+         // Deu ruim
+         function(erro) {
+            console.log(erro);
+            res.status(500).end();
+         }
+      );
+
+   }
+
+   controller.obterUm = function(req, res) {
+
+      Artigo.findById(req.params.id).exec().then(
+         function(artigo) {
+            if(artigo) { // Se o artigo existe (não veio vazio) 
+               // Retorna o artigo com status 200
+               res.json(artigo).end();
+            }
+            else {
+               // HTTP 404: Não encontrado
+               res.status(404).end();
+            }
+         },
+         function(erro) {
+            console.log(erro);
+            res.status(500).end();
+         }
+
+      );
+
+   }
+
+   controller.atualizar = function(req, res) {
+
+      Artigo.findByIdAndUpdate(req.body._id, req.body).exec().then(
+         function() {
+            // HTTP 204: OK, sem dados
+            res.send(204).end();
+         },
+         function(erro) {
+            console.log(erro);
+            res.send(500).end();
+         }
+      );
+
+   }
+   
    return controller;
 
 }

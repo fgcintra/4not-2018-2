@@ -7,8 +7,15 @@ module.exports = function() {
          type: String,
          required: true // O atributo não pode ficar em branco
       },
+      /*
       tipo: {
          type: String,
+         required: true
+      },
+      */
+      tipo: {
+         type: mongoose.SchemaTypes.ObjectId,
+         ref: 'Tipo',
          required: true
       },
       tamanho: {

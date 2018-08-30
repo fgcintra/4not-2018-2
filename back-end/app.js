@@ -34,4 +34,7 @@ app.use('/ola', teste);
 const artigo = require('./routes/artigo');
 app.use('/artigo', artigo);
 
+const tipo = require('./routes/tipo');
+app.use('/tipo', tipo);
+
 module.exports = app;

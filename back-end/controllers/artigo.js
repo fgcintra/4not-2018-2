@@ -27,7 +27,7 @@ module.exports = function() {
 
    controller.listar = function(req, res) {
 
-      Artigo.find().exec().then(
+      Artigo.find().populate('tipo').exec().then(
          // Foi bem
          function(artigos) {
             // Retornando os artigos encontrados com
@@ -70,6 +70,22 @@ module.exports = function() {
       Artigo.findByIdAndUpdate(req.body._id, req.body).exec().then(
          function() {
             // HTTP 204: OK, sem dados
+            res.send(204).end();
+         },
+         function(erro) {
+            console.log(erro);
+            res.send(500).end();
+         }
+      );
+
+   }
+
+   controller.excluir = function(req, res) {
+
+      // findByIdAndRemove(): busca o objeto pelo id
+      // passado e o exclui do BD      
+      Artigo.findByIdAndRemove(req.params.id).exec().then(
+         function() {
             res.send(204).end();
          },
          function(erro) {

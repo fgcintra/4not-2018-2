@@ -27,7 +27,7 @@ module.exports = function() {
 
    controller.listar = function(req, res) {
 
-      Artigo.find().populate('tipo').exec().then(
+      Artigo.find().populate('tipo').populate('linha').populate('tamanho').exec().then(
          // Foi bem
          function(artigos) {
             // Retornando os artigos encontrados com

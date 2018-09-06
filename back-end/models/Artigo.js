@@ -18,8 +18,15 @@ module.exports = function() {
          ref: 'Tipo',
          required: true
       },
+      /*
       tamanho: {
          type: String,
+         required: true
+      },
+      */
+      tamanho: {
+         type: mongoose.SchemaTypes.ObjectId,
+         ref: 'Tamanho',
          required: true
       },
       cor: {
@@ -29,8 +36,15 @@ module.exports = function() {
       marca: {
          type: String
       },
+      /*
       linha: {
          type: String,
+         required: true
+      },
+      */
+      linha: {
+         type: mongoose.SchemaTypes.ObjectId,
+         ref: 'Linha',
          required: true
       },
       origem: {

@@ -1,11 +1,11 @@
-const Tipo = require('../models/Tipo')(/* construtor */);
+const Linha = require('../models/Linha')(/* construtor */);
 
 module.exports = function() {
 
    const controller = {};
 
    controller.novo = function(req, res) {
-      Tipo.create(req.body).then(
+      Linha.create(req.body).then(
          function() {
             res.status(201).end();
          },
@@ -17,9 +17,9 @@ module.exports = function() {
    }
 
    controller.listar = function(req, res) {
-      Tipo.find().exec().then(
-         function(tipos) {
-            res.json(tipos).end();
+      Linha.find().exec().then(
+         function(linhas) {
+            res.json(linhas).end();
          },
          function(erro) {
             console.log(erro);
@@ -30,11 +30,12 @@ module.exports = function() {
 
    controller.obterUm = function (req, res) {
 
-      Tipo.findById(req.params.id).exec().then(
-         function (tipo) {
-            if (tipo) { // Se o tipo existe (não veio vazio) 
-               // Retorna o tipo com status 200
-               res.json(tipo).end();
+      // findById(): procura um objeto por seu id. Encontra 0 ou 1 ocorrência
+      Linha.findById(req.params.id).exec().then(
+         function (linha) {
+            if (linha) { // Encontrou o linha (não veio vazio)
+               // Retorna o linha encontrado com status HTTP 200
+               res.json(linha).end();
             }
             else {
                // HTTP 404: Não encontrado
@@ -45,21 +46,24 @@ module.exports = function() {
             console.log(erro);
             res.status(500).end();
          }
-
       );
 
    }
 
    controller.atualizar = function (req, res) {
 
-      Tipo.findByIdAndUpdate(req.body._id, req.body).exec().then(
+      // findByIdAndUpdate(): procura um objeto pelo id passado
+      // e promove as alterações previstas no req.body
+      Linha.findByIdAndUpdate(req.body._id, req.body).exec().then(
+         // Foi bem
          function () {
-            // HTTP 204: OK, sem dados
-            res.send(204).end();
+            // HTTP 204: OK, sem conteúdo
+            res.status(204).end();
          },
+         // Deu ruim
          function (erro) {
             console.log(erro);
-            res.send(500).end();
+            res.status(500).end();
          }
       );
 
@@ -67,19 +71,19 @@ module.exports = function() {
 
    controller.excluir = function (req, res) {
 
-      // findByIdAndRemove(): busca o objeto pelo id
-      // passado e o exclui do BD      
-      Tipo.findByIdAndRemove(req.params.id).exec().then(
+      // findByIdAndRemove(): encontra o objeto especificado pelo id e o exclui do BD
+      Linha.findByIdAndRemove(req.params.id).exec().then(
          function () {
-            res.send(204).end();
+            res.status(204).end();
          },
          function (erro) {
             console.log(erro);
-            res.send(500).end();
+            res.status(500).end();
          }
       );
 
    }
 
    return controller;
+
 }

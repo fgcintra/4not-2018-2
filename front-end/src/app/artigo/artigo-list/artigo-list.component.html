@@ -1,3 +1,32 @@
-<pre>
-  {{ artigos[0].descricao }}
-</pre>
+<h1>Listagem de artigos</h1>
+
+<table>
+  <tr>
+    <th>Descrição</th>
+    <th>Tipo</th>
+    <th>Tamanho</th>
+    <th>Cor</th>
+    <th>Marca</th>
+    <th>Linha</th>
+    <th>Estado Cons.</th>
+    <th>Conjunto?</th>
+    <th>Data compra</th>
+    <th>Valor compra</th>
+  </tr>
+
+  <tr *ngFor="let artigo of artigos">
+    <td>{{ artigo.descricao }}</td>
+    <td>{{ artigo.tipo.descricao }}</td>
+    <td>{{ artigo.tamanho.descricao }}</td>
+    <td>{{ artigo.cor }}</td>
+    <td>{{ artigo.marca }}</td>
+    <td>{{ artigo.linha.descricao }}</td>
+    <td>{{ artigo.estado_conservacao }}</td>
+    <td>
+      <input *ngIf="artigo.conjunto" type="checkbox" checked onclick="return false;" />
+      <input *ngIf="! artigo.conjunto" type="checkbox" onclick="return false;" />
+    </td>
+    <td>{{ artigo.data_compra | date: 'dd/MM/yyyy HH:mm':'+0000' }}</td>
+    <td>{{ artigo.valor_compra | currency:'BRL':'symbol':'1.2':'pt' }}</td>
+  </tr>
+</table>

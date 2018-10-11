@@ -9,6 +9,20 @@ import { ArtigoService } from '../../services/artigo.service';
 export class ArtigoListComponent implements OnInit {
 
   public artigos: any;
+  
+  public colunasVisiveis: string[] = [
+    'descricao',
+    'tipo',
+    'tamanho',
+    'cor',
+    'marca',
+    'linha',
+    'estado_conservacao',
+    'conjunto',
+    'data_compra',
+    'valor_compra'
+  ];
+  
   // Injeção de dependência no parâmetro do construtor
   constructor(private artigoSrv: ArtigoService) { }
 

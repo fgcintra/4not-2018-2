@@ -13,3 +13,16 @@ body {
 .mat-row {
    height: auto !important;
 }
+
+.main-container {
+   margin: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container > * {
+  width: 100%;
+}

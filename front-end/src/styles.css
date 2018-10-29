@@ -26,3 +26,7 @@ body {
 .form-container > * {
   width: 100%;
 }
+
+.div-checkbox {
+  margin-top: 16px;
+}

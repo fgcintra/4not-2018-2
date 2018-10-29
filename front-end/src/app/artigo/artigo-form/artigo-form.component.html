@@ -8,16 +8,78 @@
 
     <mat-form-field>
       <mat-label>Descrição</mat-label>
-      <input matInput placeholder="Informe a descrição do artigo" required>
+      <input matInput placeholder="Informe a descrição do artigo" required
+        name="descricao" [(ngModel)]="artigo.descricao">
     </mat-form-field>
     
     <mat-form-field>
       <mat-label>Tipo</mat-label>
       <mat-select placeholder="Selecione o tipo do artigo" required>
-        <mat-option value="1">Teste 1</mat-option>
-        <mat-option value="2">Teste 2</mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Tamanho</mat-label>
+      <mat-select placeholder="Selecione o tamanho da peça" required>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cor</mat-label>
+      <input matInput placeholder="Informe a cor do artigo" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Marca</mat-label>
+      <input matInput placeholder="Informe a marca do artigo">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Linha</mat-label>
+      <mat-select placeholder="Selecione a linha do artigo" required>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Origem</mat-label>
+      <input matInput placeholder="Informe a origem do artigo">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Estado de conservação</mat-label>
+      <input matInput placeholder="Informe o estado de conservação" required>
+    </mat-form-field>
+
+    <div class="mat-form-field-wrapper div-checkbox">
+      <mat-label>Conjunto? &nbsp;</mat-label>
+      <mat-checkbox required></mat-checkbox>      
+    </div>
+
+    <mat-form-field>
+      <mat-label>Data da compra</mat-label>
+      <input matInput [matDatepicker]="dataCompra" placeholder="Selecione a data de compra" required>
+      <mat-datepicker-toggle matSuffix [for]="dataCompra"></mat-datepicker-toggle>
+      <mat-datepicker #dataCompra></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Valor da compra</mat-label>
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput type="number" placeholder="Informe o valor da compra" required>
+    </mat-form-field>    
+
+    <mat-form-field>
+      <mat-label>Data da venda</mat-label>
+      <input matInput [matDatepicker]="dataVenda" placeholder="Selecione a data de venda">
+      <mat-datepicker-toggle matSuffix [for]="dataVenda"></mat-datepicker-toggle>
+      <mat-datepicker #dataVenda></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Valor da venda</mat-label>
+      <span matPrefix>R$ &nbsp;</span>
+      <input matInput type="number" placeholder="Informe o valor da venda">
+    </mat-form-field>    
 
   </form>
 

@@ -30,3 +30,15 @@ body {
 .div-checkbox {
   margin-top: 16px;
 }
+
+.center-buttons {
+  text-align: center;
+}
+
+.center-buttons .mat-primary {
+  margin-right: 10px;
+}
+
+.center-buttons .mat-warn {
+  margin-left: 10px;
+}

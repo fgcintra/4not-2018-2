@@ -61,7 +61,7 @@ registerLocaleData(localePt);
     MatSelectModule,
     MatSliderModule,
     /**** Datas em português no MatDatepicker  ****/
-    //MatNativeDateModule
+    // MatNativeDateModule
     MatMomentDateModule
     /**********************************************/
   ],
@@ -69,7 +69,7 @@ registerLocaleData(localePt);
     /**** Datas em português no MatDatepicker  ****/
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS}
-    /**********************************************/    
+    /**********************************************/
   ],
   bootstrap: [AppComponent]
 })

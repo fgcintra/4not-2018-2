@@ -25,7 +25,7 @@ export class ArtigoFormComponent implements OnInit {
 
   public titulo: String = 'Novo artigo';
 
-  public artigo: any = {}; // Objeto vazio
+  public artigo: any = {conjunto: false};
 
   public tipos: any = []; // Vetor vazio
   public tamanhos: any = [];

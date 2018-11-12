@@ -10,9 +10,10 @@ module.exports = function() {
       // que vieram no corpo (body) da requisição
       Artigo.create(req.body).then(
          // Callback se der certo
-         function() {
+         function(artigo) {
             // HTTP 201: Criado
-            res.send(201).end();
+            res.send(null);
+            res.sendStatus(201).end();
          },
          // Callback se der errado
          function(erro) {

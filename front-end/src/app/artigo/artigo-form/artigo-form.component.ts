@@ -4,6 +4,7 @@ import { ArtigoService } from '../../services/artigo.service';
 import { TipoService } from '../../services/tipo.service';
 import { TamanhoService } from '../../services/tamanho.service';
 import { LinhaService } from '../../services/linha.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-artigo-form',
@@ -18,7 +19,8 @@ export class ArtigoFormComponent implements OnInit {
     private artigoSrv: ArtigoService,
     private tipoSrv: TipoService,
     private tamanhoSrv: TamanhoService,
-    private linhaSrv: LinhaService
+    private linhaSrv: LinhaService,
+    private snackBar: MatSnackBar
   ) { }
 
   public titulo: String = 'Novo artigo';
@@ -83,14 +85,20 @@ export class ArtigoFormComponent implements OnInit {
     }
     retorno.subscribe(
       () => {
-        alert('Artigo salvo com sucesso');
+        this.snackBar.open('Artigo salvo com sucesso', 'OK', { duration: 2000 });
         this.router.navigate(['artigo']); // Volta à listagem
       },
       erro => {
-        alert('Erro ao salvar o artigo: ' + erro.message);
+        this.snackBar.open('Erro ao salvar o artigo: ' + erro.message, 'OK');
         console.error(erro);
       }
     );
+  }
+
+  cancelar() {
+    if (confirm('Deseja realmente cancelar as alterações?')) {
+      this.router.navigate(['artigo']);
+    }
   }
 
 
